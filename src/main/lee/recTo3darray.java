@@ -9,6 +9,7 @@ import java.util.Scanner;
  * Created by le on 17-6-3.
  */
 public class recTo3darray {
+    //public int[][] array;
    //显示
     public void tetsArray(int[][] array, int row, int col) {
          System.out.println("-----------------------------");
@@ -54,31 +55,6 @@ public class recTo3darray {
                     continue;
             }
         }
-    }
-
-    public static int[][] save(String fileName) {
-        int[][] les = null;
-        try {
-            Scanner scanner = new Scanner(new File(fileName));
-            int i = 0;
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
-                if (i == 0) {
-                    int num = Integer.parseInt(line);
-                    les = new int[num][num];
-                } else {
-                    for (int j = 0; j < line.length(); j++) {
-                        les[i - 1][j] = Integer.parseInt(line.charAt(j) + "");
-                    }
-                }
-                i++;
-            }
-            scanner.close();
-            return les;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     //生成输入矩阵
@@ -165,14 +141,14 @@ public class recTo3darray {
                 //obj.count(array, row, col, res);
 
                 //更新array
-                obj.update(array, row, col, res);
+            obj.update(array, row, col, res);
 
                 //显示更新后得细胞存活状态
-                obj.tetsArray(array, row, col);
+            obj.tetsArray(array, row, col);
 
                 //重置周围细胞存活数
-                for (int i = 0; i < row + 2; i++)
-                    Arrays.fill(res[i], 0);
+            for (int i = 0; i < row + 2; i++)
+                Arrays.fill(res[i], 0);
 
                 Thread.sleep(d);
                 System.out.println(ANSI_CLS);
